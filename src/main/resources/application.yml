@@ -1,0 +1,12 @@
+spring:
+    datasource:
+        url: ${DB_JDBC_URL}?rewriteBatchedStatements=true&profileSQL=true&logger=Slf4JLogger&maxQuerySizeToLog=999999
+        username: ${DB_USER}
+        password: ${DB_PASSWORD}
+
+    jpa:
+        hibernate:
+            ddl-auto: update
+        naming:
+            physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
