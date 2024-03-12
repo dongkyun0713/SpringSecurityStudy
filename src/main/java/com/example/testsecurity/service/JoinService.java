@@ -15,6 +15,9 @@ public class JoinService {
     public void joinProcess(JoinDto joinDto) {
         User user = new User();
 
+        boolean isUser = userRepository.existsUserByUserName(user.getUserName());
+        if (isUser) return;
+
         user.setUserName(joinDto.getUserName());
         user.setPassword(bCryptPasswordEncoder.encode(joinDto.getPassword()));  // 암호화 시켜서 데베에 저장되어야 함.
         user.setRole("ROLE_USER");
