@@ -13,14 +13,15 @@ public class JoinService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     public void joinProcess(JoinDto joinDto) {
-        User user = new User();
-
-        boolean isUser = userRepository.existsUserByUserName(user.getUserName());
+        boolean isUser = userRepository.existsUserByUsername(joinDto.getUsername());
         if (isUser) return;
 
-        user.setUserName(joinDto.getUserName());
+        User user = new User();
+
+        user.setUsername(joinDto.getUsername());
         user.setPassword(bCryptPasswordEncoder.encode(joinDto.getPassword()));  // 암호화 시켜서 데베에 저장되어야 함.
-        user.setRole("ROLE_USER");
+        user.setRole("ROLE_ADMIN");
+
         userRepository.save(user);
     }
 }

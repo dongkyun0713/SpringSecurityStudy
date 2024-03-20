@@ -10,19 +10,11 @@ spring:
         naming:
             physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 
+    mustache:
+      servlet:
+          expose-request-attributes: true
 
-# Swagger
-springdoc:
-    swagger-ui:
-        path: /swagger-ui.html
-        tags-sorter: alpha
-        operations-sorter: alpha
-    api-docs:
-        path: /api-docs/json
-        groups:
-            enable: true
-    cache:
-        disabled: true
-    use-fqn: true
-    default-consumes-media-type: application/json;charset=UTF-8
-    default-produces-media-type: application/json;charset=UTF-8
+server:
+    servlet:
+        session:
+            timeout: 1800
